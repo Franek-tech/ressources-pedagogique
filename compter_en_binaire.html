@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Compter en binaire</title>
+
+    <style>
+        .tab
+        {
+            display:inline-block;
+            padding-left: 15px;
+        }
+        .binary_exemple > *
+        {
+            display:inline-block;
+        }
+    </style>
+    <script>
+        // Ce code peut être utilisé pour 2 choses:
+        // 1 - Apprendre à compter en binaire
+        // 2 - Apprendre à optimiser du code
+        // TODO: optimiser ce code!
+        const bit4 = "0000";
+        const bit8 = "00000000";
+        const bit16 = "0000000000000000";
+        const bit32 = "00000000000000000000000000000000";
+
+        let value_bit_4 = 0;
+        let value_bit_8 = 0;
+        let value_bit_16 = 0;
+        let value_bit_32 = 0;
+
+        setInterval( increment, 700);
+
+        function increment(){
+
+            //if else more compact maner.
+            //
+            //  if(value_bit_4 < 15)
+            //  {
+            //    value_bit_4 +=1
+            //  };
+            //  else
+            //  {
+            //    value_bit_4 = 0
+            //  };
+            //
+
+            // repetition 0
+            value_bit_4 < 15 ? (value_bit_4 +=1):(value_bit_4 = 0);
+            // repetition 1
+            value_bit_8 < 255 ? (value_bit_8 +=1):(value_bit_8 = 0);
+            // repetition 2
+            value_bit_16 < 65535 ? (value_bit_16 +=1):(value_bit_16 = 0);
+            // repetition 3
+            value_bit_32 < 4294967295 ? (value_bit_32 +=1):(value_bit_32 = 0);
+
+            // repetition 1
+            let decimal_4bit = value_bit_4.toString(2) ;
+            let decimal_4bit_len = decimal_4bit.length;
+            let decimal_4bit_text = bit4.slice(0, -decimal_4bit_len);
+            decimal_4bit_text += decimal_4bit;
+            // repetition 2
+            let decimal_8bit = value_bit_8.toString(2) ;
+            let decimal_8bit_len = decimal_8bit.length;
+            let decimal_8bit_text = bit8.slice(0, -decimal_8bit_len);
+            decimal_8bit_text += decimal_8bit;
+            // repetition 3
+            let decimal_16bit = value_bit_16.toString(2) ;
+            let decimal_16bit_len = decimal_16bit.length;
+            let decimal_16bit_text = bit16.slice(0, -decimal_16bit_len);
+            decimal_16bit_text += decimal_16bit;
+            // repetition 4
+            let decimal_32bit = value_bit_32.toString(2) ;
+            let decimal_32bit_len = decimal_32bit.length;
+            let decimal_32bit_text = bit32.slice(0, -decimal_32bit_len);
+            decimal_32bit_text += decimal_32bit;
+
+            // repetition 0
+            document.getElementById("bit4_value").innerHTML = value_bit_4;
+            document.getElementById("bit4").innerHTML = decimal_4bit_text;
+            // repetition 1
+            document.getElementById("bit8_value").innerHTML = value_bit_8;
+            document.getElementById("bit8").innerHTML = decimal_8bit_text;
+            // repetition 2
+            document.getElementById("bit16_value").innerHTML = value_bit_16;
+            document.getElementById("bit16").innerHTML = decimal_16bit_text;
+            // repetition 4
+            document.getElementById("bit32_value").innerHTML = value_bit_32;
+            document.getElementById("bit32").innerHTML = decimal_32bit_text;
+
+
+        }
+    </script>
+</head>
+<body>
+    <h1> Compter en binaire </h1>
+
+    <p> Compter en binaire, est un savoir fondamental en informatique et en electronique,
+        <br>
+        un bit est la contraction de <b>bi</b>nary digi<b>t</b>, soit <b>chiffre binaire</b>
+        un systeme binaire c'est : </p>
+        <ul>
+            <li> 0 ou 1</li>
+            <li> oui ou non</li>
+            <li> allumé ou éteint</li>
+            <li> signal ou pas de signal</li>
+        </ul>
+
+    <h2>Concept:</h2>
+    <span class="tab">
+
+        <div class="binary_exemple">
+            <span><b>1bit</b> peut-être <b>0</b> ou <b>1</b> donc 2 possibilité  <b> 0 ou 1</b>&emsp; 2<sup>1</sup> </span>
+        </div>
+        <div class="binary_exemple">
+            <span><b>2bit</b> peut-être <b>00</b> ou <b>01</b> ou <b>10</b> ou <b>11</b> donc 4 possibilité  <b> 0,1,2,3</b>&emsp; 2<sup>2</sup> </span>
+        </div>
+        <div class="binary_exemple">
+            <span><b>3bit</b> peut-être <b>000</b> ou <b>001</b> ou <b>010</b> <b>...</b> donc 9 possibilité  <b> 0,1,2,3,4,5,6,7,8,9</b>&emsp; 2<sup>3</sup>  </span>
+        </div>
+    </span>
+    <h2>Animated Exemple:</h2>
+    <span class="tab">
+        <div class="binary_exemple">
+            <span><b>4bit</b></span>
+            <div id="bit4">0000</div>
+            <div id="bit4_value">0</div>
+            <span><i>&emsp; max value is 16 cause it's 2<sup>4</sup></i></span>
+        </div>
+
+        <div class="binary_exemple">
+            <span><b>8bit</b></span>
+            <div id="bit8">00000000</div>
+            <div id="bit8_value">0</div>
+            <span><i>&emsp; max value is 255 cause it's 2<sup>8</sup></i></span>
+        </div>
+
+        <div class="binary_exemple">
+            <span><b>16bit</b></span>
+            <div id="bit16">0000000000000000</div>
+            <div id="bit16_value">0</div>
+            <span><i>&emsp; max value is 65,536 cause it's 2<sup>8</sup></i></span>
+        </div>
+
+        <div class="binary_exemple">
+            <span><b>32bit</b></span>
+            <div id="bit32">00000000000000000000000000000000</div>
+            <div id="bit32_value">0</div>
+            <span><i>&emsp; max value is 4 294 967 296 cause it's 2<sup>32</sup></i></span>
+        </div>
+    </span>
+</body>
+</html>
